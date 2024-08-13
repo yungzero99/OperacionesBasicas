@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ViewModels="clr-namespace:OperacionesBasicas.ViewModels"
+             x:DataType="ViewModels:OperacionesViewModel"
+             x:Class="OperacionesBasicas.Views.MainView"
+             Title="MainView">
+
+    <ContentPage.BindingContext>
+        <ViewModels:OperacionesViewModel />
+    </ContentPage.BindingContext>
+
+    <VerticalStackLayout Spacing="10">
+        
+        <Label Text="Operaciones Básicas" FontSize="Large" HorizontalOptions="Center" />
+        <Label Text="{Binding Count}" FontSize="Large" HorizontalOptions="Center"/>
+
+        <Button Text="Incrementar" Command="{Binding IncrementCommand}" />
+        <Button Text="Decrementar" Command="{Binding DecrementCommand}" />
+        <Frame>
+            <HorizontalStackLayout>
+                <Label
+                Text="Numero 1:"/>
+                <Entry
+                    Placeholder="Ingrse un numero"
+                    Text="{Binding Numero1, Mode=TwoWay}"
+                    Keyboard="Numeric"
+                    />
+            </HorizontalStackLayout>
+        </Frame>
+
+        <Frame>
+            <HorizontalStackLayout>
+                <Label
+                Text="Numero 2"/>
+                <Entry
+                    Placeholder="Ingrse un numero"
+                    Keyboard="Numeric"
+                    Text="{Binding Numero2, Mode=TwoWay}"
+                    />
+            </HorizontalStackLayout>
+        </Frame>
+
+
+
+        <Label Text="Resultados" FontSize="Large" HorizontalOptions="Center" />
+        
+        <Grid
+            RowDefinitions="*,*"
+            ColumnDefinitions="*,*">
+
+            <Frame Grid.Column="0" Grid.Row="0">
+                <VerticalStackLayout>
+                    <Label Text="Suma" FontSize="Large" HorizontalOptions="Start" />
+                    <HorizontalStackLayout>
+                        <Label
+                Text="{Binding Suma}"/>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame Grid.Column="0" Grid.Row="1">
+                <VerticalStackLayout>
+                    <Label Text="Resta" FontSize="Large" HorizontalOptions="Start" />
+                    <HorizontalStackLayout>
+                        <Label
+                Text="{Binding Resta}"/>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame Grid.Column="1" Grid.Row="0">
+                <VerticalStackLayout>
+                    <Label Text="Multiplicacion" FontSize="Large" HorizontalOptions="Start" />
+                    <HorizontalStackLayout>
+                        <Label
+                Text="{Binding Multiplicacion}"/>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame Grid.Column="1" Grid.Row="1">
+                <VerticalStackLayout>
+                    <Label Text="Division" FontSize="Large" HorizontalOptions="Start" />
+                    <HorizontalStackLayout>
+                        <Label
+                        x:Name="lblDivision"
+                Text="{Binding Division}"/>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </Frame>
+            
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>
